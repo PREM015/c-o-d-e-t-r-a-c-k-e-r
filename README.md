@@ -11,7 +11,28 @@
 </p>
 
 ---
+<<<<<<< HEAD
 ## 📸 Preview
+=======
+
+## ✨ **Overview**
+
+**c-o-d-e-t-r-a-c-k-e-r** is a lightweight and efficient web application designed to help developers stay consistent with their coding practice. Whether you're solving DSA problems, building side projects, or learning something new, this app helps you log, track, and stay accountable in your coding journey.
+
+---
+
+## 🚀 **Features**
+
+- 📋 **Organize your progress**: Track coding problems, goals, and tasks with ease.
+- 🌓 **Light/Dark theme**: Toggle between light and dark themes, with persistent settings.
+- 📆 **Timeline logging** *(coming soon!)*: Log and visualize your daily coding activity.
+- ⚡ **Fast and efficient**: Built for performance and minimalism.
+- 🎨 **Sleek design**: Minimalistic UI for a focused and smooth experience.
+
+---
+
+## 📸 **Preview**
+>>>>>>> a4fe4ed241ca64ceb2a1ba2233cf528ca4a0bbc3
 
 ![App Screenshot](./src/assets/images/screenshot.png)
 
