@@ -1,0 +1,141 @@
+/* ===================================
+   🌐 Global Reset / Body Styles
+=================================== */
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #F8FAFC; /* Light text */
+  background-color: #0F172A; /* Dark background for contrast */
+}
+
+/* ===================================
+   🔵 Navbar Container
+=================================== */
+.navbar {
+  background-color: #1E293B;
+  color: #F8FAFC;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-bottom: 3px solid #3b82f6;
+  position: relative;
+  z-index: 1000;
+}
+
+/* ===================================
+   🔷 Logo Section
+=================================== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-img {
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: rotate(360deg);
+}
+
+.site-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+/* ===================================
+   🔗 Nav Links Container
+=================================== */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+/* ===================================
+   🎯 Nav Buttons
+=================================== */
+.nav-button {
+  background: none;
+  border: none;
+  color: #F8FAFC;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+  background-color: #3b82f6;
+  color: #1E293B;
+  transform: scale(1.05);
+}
+
+/* ===================================
+   📂 Dropdown Styles
+=================================== */
+.dropdown {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: #334155;
+  color: #F8FAFC;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 200px;
+  display: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.nav-item:last-child .dropdown {
+  right: 0;
+  left: auto;
+}
+
+.dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown li {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown li:hover {
+  background-color: #475569;
+  color: #3b82f6;
+}
+
+.dropdown li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Show dropdown when hovering over nav-item */
+.nav-item:hover .dropdown {
+  display: block;
+}
+.nav-button.active {
+  background-color: #3b82f6;
+  color: #1E293B;
+  font-weight: 600;
+  border-radius: 6px;
+}

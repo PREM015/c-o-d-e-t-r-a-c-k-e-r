@@ -1,0 +1,223 @@
+/* Body.css */
+.body-container {
+  display: flex;
+  justify-content: space-between; /* Space between the image and content */
+  align-items: center;
+  height: 100vh; /* Full height */
+  background: linear-gradient(135deg, #1e293b, #3b82f6); /* Darker gradient with a blue accent */
+  padding: 20px;
+  padding-top: 80px; /* Ensure it's not overlapped by the navbar */
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px; /* Space around the image */
+}
+
+.image {
+  width: 100%;
+  max-width: 450px; /* Adjusted max-width for better layout */
+  height: auto;
+  border-radius: 10px; /* Slightly smaller border radius for a sharper look */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Deeper shadow for more dramatic depth */
+  transition: transform 0.3s ease-in-out, border 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  border: 5px solid transparent; /* Default border style */
+}
+
+.image:hover {
+  transform: scale(1.1); /* Larger zoom effect on hover */
+  border-color: #3b82f6; /* Neon blue border on hover */
+  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.6); /* Glowing effect */
+}
+
+.body-content {
+  max-width: 600px; /* Adjust width for better spacing */
+  padding: 40px;
+  background: #2d3a4e; /* Dark background for the content */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+  border-radius: 20px; /* Rounded corners for a sleek look */
+  text-align: left;
+  font-family: 'Arial', sans-serif;
+  color: #F8FAFC; /* Light text for readability */
+  position: relative;
+}
+
+.heading {
+  font-size: 3rem; /* Larger font size for a stronger impact */
+  font-weight: bold;
+  color: #F8FAFC; /* White color for heading */
+  text-shadow: 2px 2px 5px rgba(59, 130, 246, 0.8); /* Blue glow effect for the heading */
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.5rem; /* Larger font for better readability */
+  color: #F8FAFC; /* White text for contrast */
+  line-height: 1.8;
+  margin-bottom: 30px;
+  font-weight: 500;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Shadow for text depth */
+}
+
+.button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.explore-button {
+  background-color: #3b82f6; /* Neon blue for the button */
+  color: #fff;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: bold;
+  text-transform: uppercase; /* Uppercase text for bold appearance */
+}
+
+.explore-button:hover {
+  background-color: #1E293B; /* Dark background when hovered */
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Dark shadow for depth */
+}
+
+.explore-button:active {
+  transform: scale(1); /* Button presses down a little */
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.8), 0 0 10px rgba(59, 130, 246, 0.8), 0 0 15px rgba(59, 130, 246, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 1), 0 0 20px rgba(59, 130, 246, 1), 0 0 30px rgba(59, 130, 246, 1);
+  }
+  100% {
+    text-shadow: 0 0 5px rgba(59, 130, 246, 0.8), 0 0 10px rgba(59, 130, 246, 0.8), 0 0 15px rgba(59, 130, 246, 0.8);
+  }
+}
+
+.heading {
+  animation: glow 1.5s infinite; /* Glowing effect on the heading */
+}
+
+.description {
+  animation: glow 2s infinite; /* Glowing effect on the description */
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+  .body-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .image-section {
+    margin-bottom: 30px;
+  }
+
+  .body-content {
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+  }
+
+  .explore-button {
+    padding: 0.8rem 2rem;
+  }
+}
+/* Body.css */
+.body-container {
+  display: flex;
+  justify-content: space-between; /* Space between the image and content */
+  align-items: center;
+  height: calc(100vh - 80px); /* Adjust for navbar height */
+  background: linear-gradient(135deg, #3b82f6, #1E293B); /* Gradient background */
+  padding: 20px;
+  padding-top: 80px; /* Ensure it's not overlapped by the navbar */
+}
+
+.image-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px; /* Space around the image */
+}
+
+.image {
+  width: 100%;
+  max-width: 450px; /* Adjusted max-width for better layout */
+  height: auto;
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  transition: transform 0.3s ease-in-out, border 0.3s ease; /* Smooth transition */
+  border: 5px solid transparent; /* Default border style */
+}
+
+.image:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  border-color: #3b82f6; /* Border color changes on hover */
+}
+
+.body-content {
+  max-width: 600px; /* Adjust width for better spacing */
+  padding: 40px;
+  background: linear-gradient(135deg, #3b82f6, #1E293B); /* Same gradient as header */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Stronger shadow for depth */
+  border-radius: 20px; /* Rounded corners */
+  text-align: left;
+  font-family: 'Arial', sans-serif;
+  color: #F8FAFC; /* White text for readability */
+}
+
+.heading {
+  font-size: 2.5rem; /* Adjusted size for better visual balance */
+  font-weight: bold;
+  color: #F8FAFC; /* White color for heading */
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1.3rem;
+  color: #F8FAFC; /* White text for contrast */
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.explore-button {
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.explore-button:hover {
+  background-color: #1E293B;
+  transform: scale(1.05);
+}
