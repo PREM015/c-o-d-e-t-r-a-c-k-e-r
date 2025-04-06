@@ -1,4 +1,4 @@
-# 🧠 **c-o-d-e-t-r-a-c-k-e-r** 
+# 🧠 **c-o-d-e-t-r-a-c-k-e-r**
 
 <p align="center">
   Track your coding journey — from practice problems to daily progress logs — all in one sleek, minimalist web app.
@@ -11,9 +11,12 @@
 </p>
 
 ---
-<<<<<<< HEAD
-## 📸 Preview
-=======
+
+## 📸 **Preview**
+
+![App Demo](./src/assets/images/screenshot.png)
+
+---
 
 ## ✨ **Overview**
 
@@ -28,34 +31,6 @@
 - 📆 **Timeline logging** *(coming soon!)*: Log and visualize your daily coding activity.
 - ⚡ **Fast and efficient**: Built for performance and minimalism.
 - 🎨 **Sleek design**: Minimalistic UI for a focused and smooth experience.
-
----
-
-## 📸 **Preview**
->>>>>>> a4fe4ed241ca64ceb2a1ba2233cf528ca4a0bbc3
-
-![App Screenshot](./src/assets/images/screenshot.png)
-
-
-## ✨ **Overview**
-
-**c-o-d-e-t-r-a-c-k-e-r** is a lightweight and efficient web application designed to help developers stay consistent with their coding practice. Whether you're solving DSA problems, building side projects, or learning something new, this app helps you log, track, and stay accountable in your coding journey.
-
----
-
-## 🚀 **Features**
-
-- 📋 **Organize your progress**: Track coding problems, goals, and tasks with ease.
-- 🌓 **Light/Dark theme**: Toggle between light and dark themes, with persistent settings.
-- 📆 **Timeline logging** *(coming soon!)*: Log and visualize your daily coding activity.
-- ⚡ **Fast and efficient**: Built for performance and minimalism.
-- 🎨 **Sleek design**: Minimalistic UI for a focused and smooth experience.
-
----
-
-## 📸 **Preview**
-
-> _Coming soon: Screenshots or GIF demos can go here!_
 
 ---
 
@@ -101,11 +76,6 @@ This app is built using the following technologies:
 
 ---
 
-## 🖥️ **Folder Structure**
-
-Here’s an overview of the project's folder structure:
-
-
 ---
 
 ## 👥 **Contributing**
@@ -125,7 +95,7 @@ For larger features or changes, please open an issue first to discuss the approa
 
 Feel free to reach out with any questions, suggestions, or issues:
 
-- **Email**: [](mailto:contact@codetracker.com)
+- **Email**: [contact@codetracker.com](mailto:contact@codetracker.com)
 - **GitHub**: [@PREM015](https://github.com/PREM015)
 
 ---
