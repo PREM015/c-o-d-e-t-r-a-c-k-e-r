@@ -1,3 +1,4 @@
+
 # 🧠 **c-o-d-e-t-r-a-c-k-e-r**
 
 <p align="center">
@@ -7,7 +8,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/React-18.2-blue?logo=react" />
   <img src="https://img.shields.io/badge/Vite-4.0-purple?logo=vite" />
-  <img src="https://img.shields.io/badge/PNPM-Fast-yellow?logo=pnpm" />
+  <img src="https://img.shields.io/badge/NPM-Stable-red?logo=npm" />
 </p>
 
 ---
@@ -20,80 +21,79 @@
 
 ## ✨ **Overview**
 
-**c-o-d-e-t-r-a-c-k-e-r** is a lightweight and efficient web application designed to help developers stay consistent with their coding practice. Whether you're solving DSA problems, building side projects, or learning something new, this app helps you log, track, and stay accountable in your coding journey.
+**c-o-d-e-t-r-a-c-k-e-r** is a lightweight and efficient web app that helps developers stay consistent with their coding practice. Whether you're solving DSA problems, building side projects, or learning new technologies, this app helps you log progress, set goals, and stay accountable — all in one place.
 
 ---
 
 ## 🚀 **Features**
 
-- 📋 **Organize your progress**: Track coding problems, goals, and tasks with ease.
-- 🌓 **Light/Dark theme**: Toggle between light and dark themes, with persistent settings.
-- 📆 **Timeline logging** *(coming soon!)*: Log and visualize your daily coding activity.
-- ⚡ **Fast and efficient**: Built for performance and minimalism.
-- 🎨 **Sleek design**: Minimalistic UI for a focused and smooth experience.
+- 📋 **Progress Tracking** – Log coding problems, projects, and milestones.
+- 🌓 **Light/Dark Mode** – Switch between light and dark themes with persistent settings.
+- 📆 **Timeline Logging** *(coming soon!)* – Visualize your daily coding activity over time.
+- ⚡ **Fast & Minimal** – Optimized for speed, simplicity, and productivity.
+- 🎨 **Clean UI** – Designed for a smooth and distraction-free experience.
 
 ---
 
 ## 🛠️ **Getting Started**
 
-Follow these steps to get the app up and running on your local machine:
+Follow these steps to run the project locally using **npm**:
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/c-o-d-e-t-r-a-c-k-e-r.git
-    ```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/c-o-d-e-t-r-a-c-k-e-r.git
+   cd c-o-d-e-t-r-a-c-k-e-r
+   ```
 
-2. Install dependencies:
-    ```bash
-    pnpm install
-    ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-3. Run the app in development mode:
-    ```bash
-    pnpm run dev
-    ```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-Now visit `http://localhost:3000` to view the app!
+Visit [http://localhost:3000](http://localhost:3000) in your browser to see the app in action!
 
 ---
 
-## 💡 **Technologies Used**
+## 💡 **Tech Stack**
 
-This app is built using the following technologies:
+Built with:
 
-- **React**: A JavaScript library for building user interfaces.
-- **Vite**: A fast build tool for modern web projects with instant hot module replacement.
-- **PNPM**: A fast, disk space-efficient package manager.
-- **CSS**: For responsive design and smooth transitions.
-- **React Router**: For client-side routing between pages.
+- **React** – Frontend UI library
+- **Vite** – Lightning-fast development server and bundler
+- **NPM** – Dependency and package management
+- **React Router** – Client-side routing
+- **CSS** – Custom styling with responsive design
 
 ---
 
 ## 🌈 **Themes**
 
-- **Light/Dark Theme**: Toggle between a light or dark mode to match your preference.
-- **Persistent Theme**: Your theme preference is saved and remains consistent even after refreshing the page.
-
----
+- **Light/Dark Toggle** – Match your environment or preference
+- **Persistent Theme** – Saves your choice across sessions
 
 ---
 
 ## 👥 **Contributing**
 
-We welcome contributions to enhance **c-o-d-e-t-r-a-c-k-e-r**! Here's how you can contribute:
+We welcome contributions to improve **c-o-d-e-t-r-a-c-k-e-r**! To contribute:
 
-1. **Fork** the repository to your GitHub account.
-2. Create a **new branch** from `main`.
-3. **Make your changes** and ensure everything works as expected.
-4. **Open a pull request** with a clear description of your changes.
+1. Fork the repo.
+2. Create a new branch from `main`.
+3. Make your changes and ensure they work.
+4. Open a pull request with a clear description.
 
-For larger features or changes, please open an issue first to discuss the approach.
+For major changes or ideas, feel free to open an issue to discuss them first.
 
 ---
 
 ## 📬 **Contact**
 
-Feel free to reach out with any questions, suggestions, or issues:
+Got a question or suggestion?
 
 - **Email**: [contact@codetracker.com](mailto:contact@codetracker.com)
 - **GitHub**: [@PREM015](https://github.com/PREM015)
@@ -102,8 +102,9 @@ Feel free to reach out with any questions, suggestions, or issues:
 
 ## 💬 **License**
 
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for more details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
 
 ---
 
-> **Start tracking your coding journey today with c-o-d-e-t-r-a-c-k-e-r! 🚀**
+> ✨ **Start tracking your coding journey today with _c-o-d-e-t-r-a-c-k-e-r_!** 🚀
+```
