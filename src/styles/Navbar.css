@@ -133,9 +133,93 @@ body {
 .nav-item:hover .dropdown {
   display: block;
 }
+
 .nav-button.active {
   background-color: #3b82f6;
   color: #1E293B;
   font-weight: 600;
   border-radius: 6px;
+}
+
+/* ===================================
+   📱 Mobile and Tablet Responsiveness
+=================================== */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+    display: none; /* Initially hide the links */
+  }
+
+  .nav-button {
+    width: 100%;
+    padding: 0.75rem;
+    text-align: center;
+  }
+
+  /* Mobile dropdown */
+  .dropdown {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .nav-item:last-child .dropdown {
+    right: 0;
+    left: 0;
+  }
+
+  /* Hamburger menu (three-line icon) */
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    position: relative;
+  }
+
+  .hamburger-menu div {
+    background-color: #F8FAFC;
+    height: 5px;
+    margin: 5px 0;
+    border-radius: 5px;
+  }
+
+  .nav-links.show {
+    display: flex; /* Show links when hamburger menu is clicked */
+  }
+}
+
+/* Hide the hamburger menu on larger screens */
+@media (min-width: 769px) {
+  .hamburger-menu {
+    display: none;
+  }
 }

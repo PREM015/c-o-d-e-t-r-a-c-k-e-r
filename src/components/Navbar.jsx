@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import reactLogo from "../assets/react.svg";
 import "../styles/Navbar.css";
 
 function Navbar() {
   const location = useLocation(); // Get current route
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     { label: "Home", path: "/home", icon: "🏠" },
@@ -11,6 +13,10 @@ function Navbar() {
     { label: "Contact", path: "/contact", icon: "📞" },
     { label: "Login", path: "/login", icon: "🔐" },
   ];
+
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <nav className="navbar">
@@ -20,11 +26,19 @@ function Navbar() {
         <span className="site-name">CodeTracker</span>
       </Link>
 
+      {/* Hamburger Menu Icon */}
+      <div className="hamburger-menu" onClick={handleMenuToggle}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
       {/* Navigation Links */}
-      <div className="nav-links">
+      <div className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
         {navItems.map((item, index) => {
           // Check if current route is either the exact path or any child path
-          const isActive = location.pathname === item.path || location.pathname.startsWith(item.path);
+          const isActive =
+            location.pathname === item.path || location.pathname.startsWith(item.path);
 
           return (
             <div key={index} className="nav-item">

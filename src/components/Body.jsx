@@ -1,11 +1,11 @@
 // Body.jsx
-import React from "react";
+import React, { forwardRef } from "react";
 import "../styles/Body.css";
-import image1 from "../assets/images/image1.jpg"; // Correctly importing the image
+import image1 from "../assets/images/image1.jpg"; // Ensure the image exists
 
-function Body() {
+const Body = forwardRef((props, ref) => {
   return (
-    <div className="body-container">
+    <div ref={ref} className="body-container">
       <div className="image-section">
         <img src={image1} alt="CodeTracker" className="image" />
       </div>
@@ -20,6 +20,6 @@ function Body() {
       </div>
     </div>
   );
-}
+});
 
 export default Body;
