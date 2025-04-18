@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Field, Label, Switch } from '@headlessui/react'
 
-export default function Example() {
+export default function Contact() {
   const [agreed, setAgreed] = useState(false)
 
   return (
@@ -22,7 +22,7 @@ export default function Example() {
         />
       </div>
       <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Contact sales</h2>
+        <h2 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Contact Sales</h2>
         <p className="mt-2 text-lg text-gray-300">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
       </div>
       <form action="#" method="POST" className="mx-auto mt-16 max-w-xl sm:mt-20">

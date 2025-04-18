@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing"; // Import Landing component
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import ForgotPassword from "./pages/ForgotPassword";  
+import Home from "./pages/Home/Index";
+import About from "./pages/About/Index";
+import Contact from "./pages/Contact/Index";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
+import ForgotPassword from "./pages/Auth/ForgotPassword"; 
+import Dashboard from "./pages/Home/Dashboard" ;
 
 
 
@@ -29,7 +30,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
 
-       
+        {/* Add the route for Dashboard */}
+        <Route path="/dashboard" element={<Dashboard />} />
 
       
       </Routes>

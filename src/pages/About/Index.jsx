@@ -1,6 +1,6 @@
 // src/pages/About.jsx
 
-function About() {
+function Index() {
     return (
       <div>
         <h2>About Page</h2>
@@ -9,5 +9,5 @@ function About() {
     );
   }
   
-  export default About;
+  export default Index;
   
