@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './', // 👈 Add this line to fix blank screen on Netlify
+  base: './', // Ensures relative paths for assets
   plugins: [
     tailwindcss(),
     react()
