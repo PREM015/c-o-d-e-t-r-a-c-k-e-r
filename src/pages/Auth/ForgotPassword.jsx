@@ -9,11 +9,8 @@ import {
 } from '@mui/material';
 import { useTheme } from "../../contexts/ThemeContext";
 
-import { useTheme as useMuiTheme } from '@mui/material/styles';
-
 const ForgotPassword = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
-  const muiTheme = useMuiTheme();
 
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
@@ -43,7 +40,7 @@ const ForgotPassword = () => {
       sx={{
         width: 400,
         margin: 'auto',
-        mt: 5,
+        mt: 8,
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
@@ -51,10 +48,27 @@ const ForgotPassword = () => {
         color: isDarkMode ? '#ffffff' : '#000000',
         p: 3,
         borderRadius: 2,
-        boxShadow: 3,
+        boxShadow: 4,
+        position: 'relative',
       }}
     >
-      <Typography variant="h4" align="center">
+      {/* Theme Toggle */}
+      <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
+        <Switch
+          checked={isDarkMode}
+          onChange={toggleDarkMode}
+          sx={{
+            '& .MuiSwitch-thumb': {
+              backgroundColor: isDarkMode ? '#fff' : '#000',
+            },
+            '& .MuiSwitch-track': {
+              backgroundColor: isDarkMode ? '#666' : '#ccc',
+            },
+          }}
+        />
+      </Box>
+
+      <Typography variant="h4" align="center" gutterBottom>
         Forgot Password
       </Typography>
 
@@ -72,6 +86,7 @@ const ForgotPassword = () => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
+        autoComplete="email"
         fullWidth
         InputLabelProps={{ style: { color: isDarkMode ? '#fff' : '#000' } }}
         InputProps={{
@@ -80,20 +95,6 @@ const ForgotPassword = () => {
           },
         }}
       />
-
-      <Switch
-        checked={isDarkMode}
-        onChange={toggleDarkMode}
-        sx={{
-          '& .MuiSwitch-thumb': {
-            backgroundColor: isDarkMode ? '#fff' : '#000',
-          },
-          '& .MuiSwitch-track': {
-            backgroundColor: isDarkMode ? '#666' : '#ccc',
-          },
-        }}
-      />
-     
 
       <Button type="submit" variant="contained" fullWidth>
         Send Reset Link

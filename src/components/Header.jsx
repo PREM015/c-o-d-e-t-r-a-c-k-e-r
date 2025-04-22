@@ -34,7 +34,7 @@ function Header() {
   }, [currentTextIndex]);
 
   const handleExplore = () => {
-    navigate("/Body");
+    navigate("");
   };
 
   return (

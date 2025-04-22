@@ -12,11 +12,9 @@ import {
 } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useTheme as useMuiTheme } from '@mui/material/styles';
 
 const Login = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
-  const muiTheme = useMuiTheme();
 
   const [formData, setFormData] = useState({
     email: '',

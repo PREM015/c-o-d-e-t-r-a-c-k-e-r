@@ -7,15 +7,14 @@ import {
   FormControlLabel,
   Typography,
   Alert,
-  Switch
+  Switch,
+  Tooltip
 } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useTheme } from '../../contexts/ThemeContext';
-import { useTheme as useMuiTheme } from '@mui/material/styles';
 
 const Signup = () => {
-  const { isDarkMode, setIsDarkMode } = useTheme(); // Context dark mode
-  const muiTheme = useMuiTheme(); // MUI theme for palette colors
+  const { isDarkMode, setIsDarkMode } = useTheme();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -39,9 +38,9 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log('Form Data:', formData);
+      console.log('Signup Data:', formData);
       setShowAlert(false);
-      // backend submission here
+      // API call goes here
     } else {
       setShowAlert(true);
     }
@@ -65,36 +64,39 @@ const Signup = () => {
       onSubmit={handleSubmit}
       sx={{
         width: 400,
-        margin: 'auto',
+        mx: 'auto',
         mt: 5,
+        p: 4,
+        borderRadius: 3,
+        boxShadow: isDarkMode ? 4 : 3,
+        bgcolor: isDarkMode ? '#1e1e1e' : '#fafafa',
+        color: isDarkMode ? '#fff' : '#000',
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
-        bgcolor: isDarkMode ? '#121212' : '#ffffff',
-        color: isDarkMode ? '#ffffff' : '#000000',
-        p: 3,
-        borderRadius: 2,
-        boxShadow: 3,
         position: 'relative',
+        transition: 'all 0.3s ease-in-out',
       }}
     >
-      {/* Dark Mode Switch at Top Right */}
-      <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
-        <Switch
-          checked={isDarkMode}
-          onChange={toggleDarkMode}
-          sx={{
-            '& .MuiSwitch-thumb': {
-              backgroundColor: isDarkMode ? '#fff' : '#000',
-            },
-            '& .MuiSwitch-track': {
-              backgroundColor: isDarkMode ? '#666' : '#ccc',
-            },
-          }}
-        />
-      </Box>
+      {/* Dark Mode Toggle */}
+      <Tooltip title="Toggle Dark Mode" arrow>
+        <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
+          <Switch
+            checked={isDarkMode}
+            onChange={toggleDarkMode}
+            sx={{
+              '& .MuiSwitch-thumb': {
+                backgroundColor: isDarkMode ? '#fff' : '#000',
+              },
+              '& .MuiSwitch-track': {
+                backgroundColor: isDarkMode ? '#555' : '#ccc',
+              },
+            }}
+          />
+        </Box>
+      </Tooltip>
 
-      <Typography variant="h4" align="center">
+      <Typography variant="h4" align="center" fontWeight="bold">
         Sign Up
       </Typography>
 
@@ -109,10 +111,12 @@ const Signup = () => {
         helperText={errors.name}
         required
         fullWidth
-        InputLabelProps={{ style: { color: isDarkMode ? '#fff' : '#000' } }}
+        variant="outlined"
+        InputLabelProps={{ style: { color: isDarkMode ? '#ccc' : '#555' } }}
         InputProps={{
           style: {
             color: isDarkMode ? '#fff' : '#000',
+            backgroundColor: isDarkMode ? '#2a2a2a' : '#fff',
           },
         }}
       />
@@ -127,10 +131,12 @@ const Signup = () => {
         helperText={errors.email}
         required
         fullWidth
-        InputLabelProps={{ style: { color: isDarkMode ? '#fff' : '#000' } }}
+        variant="outlined"
+        InputLabelProps={{ style: { color: isDarkMode ? '#ccc' : '#555' } }}
         InputProps={{
           style: {
             color: isDarkMode ? '#fff' : '#000',
+            backgroundColor: isDarkMode ? '#2a2a2a' : '#fff',
           },
         }}
       />
@@ -144,12 +150,14 @@ const Signup = () => {
         error={Boolean(errors.password)}
         helperText={errors.password}
         required
-        autoComplete="current-password"
         fullWidth
-        InputLabelProps={{ style: { color: isDarkMode ? '#fff' : '#000' } }}
+        variant="outlined"
+        autoComplete="new-password"
+        InputLabelProps={{ style: { color: isDarkMode ? '#ccc' : '#555' } }}
         InputProps={{
           style: {
             color: isDarkMode ? '#fff' : '#000',
+            backgroundColor: isDarkMode ? '#2a2a2a' : '#fff',
           },
         }}
       />
@@ -160,29 +168,50 @@ const Signup = () => {
             name="updates"
             checked={formData.updates}
             onChange={handleChange}
-            sx={{ color: isDarkMode ? '#fff' : '#000' }}
+            sx={{ color: isDarkMode ? '#ccc' : '#333' }}
           />
         }
         label="Send me email updates"
-        sx={{ color: isDarkMode ? '#fff' : '#000' }}
+        sx={{ color: isDarkMode ? '#ccc' : '#333' }}
       />
 
-      <Button type="submit" variant="contained" fullWidth>
+      <Button
+        type="submit"
+        variant="contained"
+        fullWidth
+        sx={{
+          py: 1.5,
+          fontWeight: 'bold',
+          backgroundColor: isDarkMode ? '#1976d2' : '#1976d2',
+          '&:hover': {
+            backgroundColor: isDarkMode ? '#1565c0' : '#115293',
+          },
+        }}
+      >
         Sign Up
       </Button>
 
       <Button
         variant="outlined"
+        fullWidth
         startIcon={<GoogleIcon />}
         onClick={() => alert('Google Signup coming soon...')}
-        fullWidth
+        sx={{
+          py: 1.5,
+          color: isDarkMode ? '#fff' : '#000',
+          borderColor: isDarkMode ? '#666' : '#ccc',
+          '&:hover': {
+            backgroundColor: isDarkMode ? '#333' : '#f1f1f1',
+            borderColor: isDarkMode ? '#888' : '#bbb',
+          },
+        }}
       >
         Sign up with Google
       </Button>
 
-      <Typography align="center">
+      <Typography align="center" sx={{ mt: 1 }}>
         Already have an account?{' '}
-        <a href="/login" style={{ color: isDarkMode ? '#90caf9' : '#1976d2' }}>
+        <a href="/login" style={{ color: isDarkMode ? '#90caf9' : '#1976d2', textDecoration: 'none' }}>
           Log in
         </a>
       </Typography>
