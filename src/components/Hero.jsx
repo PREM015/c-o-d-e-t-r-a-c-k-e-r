@@ -1,8 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import Dashboard from "../pages/Home/Dashboard"
 
-const Hero = ({ scrollToRef }) => {
-  const scrollToBody = () => {
-    scrollToRef.current?.scrollIntoView({ behavior: "smooth" });
+const Hero = () => {
+  const navigate = useNavigate();
+
+  const goToDashboard = () => {
+    navigate("home/dashboard");
   };
 
   return (
@@ -20,7 +24,7 @@ const Hero = ({ scrollToRef }) => {
             place.
           </p>
           <button
-            onClick={scrollToBody}
+            onClick={goToDashboard}
             className="bg-blue-600 hover:bg-blue-700 transition-all duration-200 text-white px-6 py-3 rounded-full font-semibold text-lg shadow-lg transform hover:scale-105"
           >
             Explore Dashboard
