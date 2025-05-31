@@ -12,6 +12,8 @@ import Signup from "./pages/Auth/Signup";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import OurVision from "./pages/About/OurVision";
+
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
 
           {/* 📄 Static Pages */}
           <Route path="/about" element={<About />} />
+          <Route path="/about/OurVision" element={<OurVision />} />
+
           <Route path="/contact" element={<Contact />} />
 
           {/* 🔐 Auth Pages */}
