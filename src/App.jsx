@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Landing from "./components/Landing";
 import Home from "./pages/Home/Index";
 import Dashboard from "./pages/Home/Dashboard";
@@ -17,6 +18,8 @@ function App() {
     <ThemeProvider>
       <Router>
         <Navbar />
+
+        {/* Routes */}
         <Routes>
           {/* 🌍 Main Routes */}
           <Route path="/" element={<Landing />} />
@@ -36,6 +39,9 @@ function App() {
           {/* ❌ 404 Fallback */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+
+        {/* Global Footer (Always Visible) */}
+        <Footer />
       </Router>
     </ThemeProvider>
   );

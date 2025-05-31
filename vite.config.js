@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: './', // Ensures relative paths for assets
   plugins: [
+    require("tailwindcss-animate"),
     tailwindcss(),
     react()
   ],
