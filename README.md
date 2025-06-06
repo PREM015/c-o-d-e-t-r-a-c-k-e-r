@@ -50,7 +50,7 @@ Get the app running locally using **npm**:
 
 ```bash
 # 1️⃣ Clone the repo
-git clone https://github.com/yourusername/c-o-d-e-t-r-a-c-k-e-r.git
+git clone https://github.com/PREM015/c-o-d-e-t-r-a-c-k-e-r.git
 cd c-o-d-e-t-r-a-c-k-e-r
 
 # 2️⃣ Install dependencies
