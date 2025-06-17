@@ -36,7 +36,7 @@ const Hero = () => {
           <div className="relative group transition-transform duration-300 transform hover:scale-105">
             <img
               src={herosection}
-              className="rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] max-w-sm border-4 border-blue-500/20"
+              className="rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] w-full max-w-xl border-4 border-blue-500/20"
               alt="Code tracking dashboard preview"
             />
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-transparent via-blue-500/10 to-indigo-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
