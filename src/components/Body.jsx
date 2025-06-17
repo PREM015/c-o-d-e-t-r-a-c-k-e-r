@@ -1,6 +1,10 @@
 // src/components/Body.jsx
 import React from "react";
-import image1 from "../assets/images/image1.jpg";
+import heroImage from "../assets/images/hero-banner.png"; // Hero section image
+import dailyPracticeImg from "../assets/images/daily-practice.png";
+import progressReportsImg from "../assets/images/progress-reports.png";
+import communityRankImg from "../assets/images/community-rank.png";
+
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 
 const Body = () => {
@@ -8,17 +12,17 @@ const Body = () => {
     {
       title: "Daily Practice",
       text: "Maintain your coding streak and track daily XP growth.",
-      img: "https://heroui.com/images/hero-card-complete.jpeg",
+      img: dailyPracticeImg,
     },
     {
       title: "Progress Reports",
       text: "Visualize your coding progress with interactive graphs.",
-      img: "https://heroui.com/images/card-bar.png",
+      img: progressReportsImg,
     },
     {
       title: "Community Rank",
       text: "Compare your stats with peers in the global leaderboard.",
-      img: "https://heroui.com/images/card-pie.png",
+      img: communityRankImg,
     },
   ];
 
@@ -41,7 +45,7 @@ const Body = () => {
         </div>
         <div className="shadow-lg rounded-xl overflow-hidden animate-fade-in-up">
           <img
-            src={image1}
+            src={heroImage}
             alt="Code Tracker Preview"
             className="rounded-xl w-full object-cover h-[300px] md:h-[400px]"
           />
