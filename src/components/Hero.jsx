@@ -34,7 +34,7 @@ const Hero = () => {
         {/* Image Section */}
         <div className="mt-8 lg:mt-0 w-full lg:w-1/2 flex justify-center lg:justify-end">
           <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+            src="./assets/images/hero-section.jpg" 
             className="rounded-2xl shadow-2xl w-auto max-w-md"
             alt="Code tracking dashboard preview"
           />
