@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "../pages/Home/Dashboard"
-import herosection  from "../assets/images/hero-section.jpg"; 
+import herosection  from "../assets/images/herosection.jpg"; 
 
 const Hero = () => {
   const navigate = useNavigate();
