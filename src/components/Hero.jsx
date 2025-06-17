@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Dashboard from "../pages/Home/Dashboard"
+import herosection  from "../assets/images/hero-section.jpg"; 
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ const Hero = () => {
         {/* Image Section */}
         <div className="mt-8 lg:mt-0 w-full lg:w-1/2 flex justify-center lg:justify-end">
           <img
-            src="./assets/images/hero-section.jpg" 
+            src={herosection}
             className="rounded-2xl shadow-2xl w-auto max-w-md"
             alt="Code tracking dashboard preview"
           />
