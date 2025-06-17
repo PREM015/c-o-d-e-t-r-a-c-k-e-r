@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import image from "../../assets/images/image1.jpg"; // Replace with your own image
+import image from "../../assets/images/image1.jpg"; 
 
 function Home() {
   return (

@@ -4,11 +4,21 @@ import "../styles/Header.css";
 
 function Header() {
   const texts = [
-    "Master Data Structures & Algorithms.",
-    "Prepare for Coding Interviews.",
-    "Track Your Daily Progress.",
-    "Build Amazing Projects with Confidence.",
-    "Achieve Your Dream Tech Job.",
+    "Every Problem You Solve Counts.",
+    "Consistency Today, Success Tomorrow.",
+    "Code Hard, Dream Big.",
+    "Your Effort Writes Your Future.",
+    "Turn Logic Into Opportunity.",
+    "Solve. Learn. Repeat.",
+    "You're One Problem Closer to Mastery.",
+    "Stay Sharp. Stay Consistent.",
+    "Discipline Beats Talent When Talent Lags.",
+    "Write Code Like You Mean It.",
+    "Small Steps, Big Wins.",
+    "Debug Your Limits.",
+    "Push Code, Push Boundaries.",
+    "Earn Confidence, One Submission at a Time.",
+    "Track Progress. Build Greatness.",
   ];
 
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -17,6 +27,7 @@ function Header() {
 
   useEffect(() => {
     let charIndex = 0;
+
     const typingInterval = setInterval(() => {
       if (charIndex <= texts[currentTextIndex].length) {
         setDisplayedText(texts[currentTextIndex].slice(0, charIndex));
@@ -34,7 +45,7 @@ function Header() {
   }, [currentTextIndex]);
 
   const handleExplore = () => {
-    navigate("");
+    navigate("/dashboard"); // <-- Replace with actual route
   };
 
   return (
