@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Dashboard from "../pages/Home/Dashboard"
-import herosection  from "../assets/images/herosection.jpg"; 
+import herosection from "../assets/images/herosection.jpg";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -33,12 +32,15 @@ const Hero = () => {
         </div>
 
         {/* Image Section */}
-        <div className="mt-8 lg:mt-0 w-full lg:w-1/2 flex justify-center lg:justify-end">
-          <img
-            src={herosection}
-            className="rounded-2xl shadow-2xl w-auto max-w-md"
-            alt="Code tracking dashboard preview"
-          />
+        <div className="mt-10 lg:mt-0 w-full lg:w-1/2 flex justify-center lg:justify-end">
+          <div className="relative group transition-transform duration-300 transform hover:scale-105">
+            <img
+              src={herosection}
+              className="rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] max-w-sm border-4 border-blue-500/20"
+              alt="Code tracking dashboard preview"
+            />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-transparent via-blue-500/10 to-indigo-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+          </div>
         </div>
       </div>
     </section>
