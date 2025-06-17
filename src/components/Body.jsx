@@ -12,17 +12,17 @@ const Body = () => {
     {
       title: "Daily Practice",
       text: "Maintain your coding streak and track daily XP growth.",
-      img: dailyPracticeImg,
+      img: dailypractice,
     },
     {
       title: "Progress Reports",
       text: "Visualize your coding progress with interactive graphs.",
-      img: progressReportsImg,
+      img: progressreport,
     },
     {
       title: "Community Rank",
       text: "Compare your stats with peers in the global leaderboard.",
-      img: communityRankImg,
+      img: CommunityRank,
     },
   ];
 
