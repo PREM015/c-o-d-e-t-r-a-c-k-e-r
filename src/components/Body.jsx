@@ -1,12 +1,14 @@
 import React from "react";
 import { Card, CardBody } from "@heroui/react";
 
+// 🖼️ Importing feature and hero section images
 const dailypractice = new URL("../assets/images/dailypractice.png", import.meta.url).href;
 const progressreport = new URL("../assets/images/progressreport.png", import.meta.url).href;
 const communityrank = new URL("../assets/images/communityrank.png", import.meta.url).href;
 const heroImage = new URL("../assets/images/herosection.jpg", import.meta.url).href;
 
 const Body = () => {
+  // 🔧 Features configuration: title, description, and image
   const features = [
     {
       title: "Daily Practice",
@@ -28,7 +30,7 @@ const Body = () => {
   return (
     <div className="w-full min-h-screen px-6 py-16 bg-[#0f172a] text-white font-sans">
 
-      {/* 🔥 Glowing Animation Styles */}
+      {/* 🎨 Custom CSS animation for glowing card effect */}
       <style>
         {`
           @keyframes glow {
@@ -46,8 +48,9 @@ const Body = () => {
         `}
       </style>
 
-      {/* Hero Section */}
+      {/* 🧭 Hero Section - Introduction to the platform */}
       <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+        {/* Left: Text content */}
         <div>
           <h1 className="text-4xl lg:text-5xl font-bold leading-snug mb-4">
             Track, Improve & Showcase Your Coding Journey with{" "}
@@ -61,6 +64,8 @@ const Body = () => {
             🚀 Get Started
           </button>
         </div>
+
+        {/* Right: Hero image */}
         <div className="shadow-lg rounded-xl overflow-hidden animate-fade-in-up">
           <img
             src={heroImage}
@@ -70,7 +75,7 @@ const Body = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* ⭐ Features Section - Highlight platform capabilities */}
       <section className="max-w-7xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -80,11 +85,13 @@ const Body = () => {
               className="bg-[#1e293b] glow-card hover:scale-105 transition-transform duration-300"
             >
               <CardBody className="flex flex-col items-center justify-between p-6 h-full text-center">
+                {/* Feature image */}
                 <img
                   src={item.img}
                   alt={`${item.title} visual`}
                   className="h-36 w-36 object-contain mb-4"
                 />
+                {/* Feature text */}
                 <div>
                   <h3 className="text-lg font-semibold text-indigo-400 uppercase tracking-wide">
                     {item.title}
@@ -97,7 +104,7 @@ const Body = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* 📢 Call-to-Action Section - Encourage user sign-up */}
       <section className="mt-28 text-center max-w-3xl mx-auto px-4">
         <h2 className="text-3xl font-semibold mb-4">
           Ready to Level Up Your Coding Journey?
