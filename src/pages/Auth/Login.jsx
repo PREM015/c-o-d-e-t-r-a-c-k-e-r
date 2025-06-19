@@ -198,7 +198,7 @@ const Login = () => {
         </a>
         <br />
         <a href="/forgot-password" style={{ color: isDarkMode ? '#90caf9' : '#1976d2', textDecoration: 'none' }}>
-          Forgot Password? hello
+          Forgot Password? 
         </a>
       </Typography>
     </Box>
