@@ -1,9 +1,8 @@
-// src/components/Body.jsx
 import React from "react";
 import heroImage from "../assets/images/herosection.jpg";
 import dailypractice from "../assets/images/dailypractice.png";
 import progressreport from "../assets/images/progressreport.png";
-import communityrank from "../assets/images/communityrank.png"; // use lowercase!
+import communityrank from "../assets/images/communityrank.png";
 
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 
@@ -59,7 +58,7 @@ const Body = () => {
           {features.map((item, idx) => (
             <Card
               key={idx}
-              className="bg-[#1e293b] hover:shadow-xl transition-all duration-300 border border-indigo-500/10"
+              className="bg-[#1e293b] h-72 flex flex-col justify-between hover:shadow-xl transition-all duration-300 border border-indigo-500/10"
             >
               <CardHeader className="pb-2 pt-4 px-5">
                 <p className="uppercase text-indigo-400 text-sm font-bold">
@@ -68,12 +67,13 @@ const Body = () => {
                 <small className="text-gray-400">{item.text}</small>
               </CardHeader>
               <CardBody className="flex justify-center p-4">
-                <Image
-                  alt={`${item.title} visual`}
-                  className="rounded-xl object-cover"
-                  src={item.img}
-                  width={270}
-                />
+                <div className="w-full flex justify-center items-center">
+                  <Image
+                    alt={`${item.title} visual`}
+                    src={item.img}
+                    className="rounded-lg max-w-full h-44 object-contain"
+                  />
+                </div>
               </CardBody>
             </Card>
           ))}
