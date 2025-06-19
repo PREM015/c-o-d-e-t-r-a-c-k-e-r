@@ -1,9 +1,9 @@
 // src/components/Body.jsx
 import React from "react";
-import heroImage from "../assets/images/hero-banner.png"; // Hero section image
+import heroImage from "../assets/images/herosection.png"; // Hero section image
 import dailypractice from "../assets/images/dailypractice.png";
 import progressreport from "../assets/images/progressreport.png";
-import CommunityRank from "../assets/images/CommunityRank.png";
+import CommunityRank from "../assets/images/communityrank.png";
 
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 
