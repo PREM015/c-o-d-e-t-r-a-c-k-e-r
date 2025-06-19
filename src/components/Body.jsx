@@ -27,7 +27,24 @@ const Body = () => {
 
   return (
     <div className="w-full min-h-screen px-6 py-16 bg-[#0f172a] text-white font-sans">
-      {/* Hero Section (Secondary visual after main hero) */}
+      {/* Glowing Animation Styles */}
+      <style>
+        {`
+          @keyframes glow {
+            0%   { box-shadow: 0 0 10px 2px #6366f1; }
+            25%  { box-shadow: 0 0 10px 2px #10b981; }
+            50%  { box-shadow: 0 0 10px 2px #f59e0b; }
+            75%  { box-shadow: 0 0 10px 2px #ef4444; }
+            100% { box-shadow: 0 0 10px 2px #6366f1; }
+          }
+
+          .glow-animation {
+            animation: glow 3s infinite ease-in-out;
+          }
+        `}
+      </style>
+
+      {/* Hero Section */}
       <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
         <div>
           <h1 className="text-4xl lg:text-5xl font-bold leading-snug mb-4">
@@ -58,7 +75,7 @@ const Body = () => {
           {features.map((item, idx) => (
             <Card
               key={idx}
-              className="bg-[#1e293b] rounded-2xl hover:scale-105 transition-transform duration-300 shadow-md border border-indigo-500/20"
+              className="bg-[#1e293b] rounded-2xl hover:scale-105 transition-transform duration-300 border border-indigo-500/20 glow-animation"
             >
               <CardBody className="flex flex-col items-center justify-between p-6 h-full text-center">
                 <img
