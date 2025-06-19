@@ -1,9 +1,9 @@
 // src/components/Body.jsx
 import React from "react";
-import heroImage from "../assets/images/herosection.jpg"; // Hero section image
+import heroImage from "../assets/images/herosection.jpg";
 import dailypractice from "../assets/images/dailypractice.png";
 import progressreport from "../assets/images/progressreport.png";
-import CommunityRank from "../assets/images/communityrank.png";
+import communityrank from "../assets/images/communityrank.png"; // use lowercase!
 
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 
@@ -22,7 +22,7 @@ const Body = () => {
     {
       title: "Community Rank",
       text: "Compare your stats with peers in the global leaderboard.",
-      img: CommunityRank,
+      img: communityrank,
     },
   ];
 
@@ -86,7 +86,8 @@ const Body = () => {
           Ready to Level Up Your Coding Journey?
         </h2>
         <p className="text-gray-400 text-lg mb-6">
-          Join 1000+ developers using CodeTracker to build consistency, confidence and career-readiness.
+          Join 1000+ developers using CodeTracker to build consistency,
+          confidence and career-readiness.
         </p>
         <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 transition duration-200 rounded-lg font-semibold text-white">
           🌟 Join the Community
