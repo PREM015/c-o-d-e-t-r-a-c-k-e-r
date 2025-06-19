@@ -1,6 +1,6 @@
 // src/components/Body.jsx
 import React from "react";
-import heroImage from "../assets/images/herosection.png"; // Hero section image
+import heroImage from "../assets/images/herosection.jpg"; // Hero section image
 import dailypractice from "../assets/images/dailypractice.png";
 import progressreport from "../assets/images/progressreport.png";
 import CommunityRank from "../assets/images/communityrank.png";
