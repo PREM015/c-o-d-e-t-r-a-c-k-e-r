@@ -1,22 +1,29 @@
+import React from "react";
+
 function Index() {
   return (
     <div className="bg-[#0f172a] text-white min-h-screen px-6 py-12">
-      {/* Header Section */}
+      {/* ✅ Section 1: Page Heading */}
       <section className="max-w-4xl mx-auto text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4 text-indigo-400">About CodeTracker</h2>
+        <h2 className="text-4xl font-bold mb-4 text-indigo-400">
+          About CodeTracker
+        </h2>
         <p className="text-lg text-gray-300">
           CodeTracker is more than just a platform—it's your coding companion. Whether you're preparing for coding interviews, brushing up your DSA skills, or simply tracking progress, we've got you covered.
         </p>
       </section>
 
-      {/* Mission & Vision */}
+      {/* ✅ Section 2: Mission & Vision Statements */}
       <section className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 mb-24">
+        {/* Mission Block */}
         <div className="bg-[#1e293b] p-8 rounded-lg shadow-md">
           <h3 className="text-2xl font-semibold mb-3 text-indigo-400">🎯 Our Mission</h3>
           <p className="text-gray-300">
             To empower aspiring developers by providing a centralized platform to learn, practice, and master programming through consistent daily tracking and personalized content.
           </p>
         </div>
+
+        {/* Vision Block */}
         <div className="bg-[#1e293b] p-8 rounded-lg shadow-md">
           <h3 className="text-2xl font-semibold mb-3 text-indigo-400">🚀 Our Vision</h3>
           <p className="text-gray-300">
@@ -25,10 +32,13 @@ function Index() {
         </div>
       </section>
 
-      {/* Core Features */}
+      {/* ✅ Section 3: Core Features */}
       <section className="max-w-7xl mx-auto text-center">
         <h3 className="text-3xl font-bold text-indigo-400 mb-8">Core Features</h3>
+
+        {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-6">
+          {/* Mapping through feature list */}
           {[
             {
               icon: "📈",
@@ -60,7 +70,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Closing Statement */}
+      {/* ✅ Section 4: Final Message */}
       <section className="mt-24 text-center">
         <h3 className="text-2xl font-semibold text-indigo-400 mb-3">
           Built by developers, for developers.
