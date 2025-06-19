@@ -59,20 +59,20 @@ const Body = () => {
           {features.map((item, idx) => (
             <Card
               key={idx}
-              className="bg-[#1e293b] h-80 flex flex-col justify-between hover:shadow-xl transition-all duration-300 border border-indigo-500/10"
+              className="bg-[#1e293b] rounded-2xl hover:scale-105 transition-transform duration-300 shadow-md border border-indigo-500/20"
             >
-              <CardHeader className="pb-2 pt-4 px-5">
-                <p className="uppercase text-indigo-400 text-sm font-bold">
-                  {item.title}
-                </p>
-                <small className="text-gray-400">{item.text}</small>
-              </CardHeader>
-              <CardBody className="flex justify-center p-4">
+              <CardBody className="flex flex-col items-center justify-between p-6 h-full text-center">
                 <img
                   src={item.img}
                   alt={`${item.title} visual`}
-                  className="rounded-lg object-contain h-32 w-auto block"
+                  className="h-40 w-40 object-contain mb-4"
                 />
+                <div>
+                  <h3 className="text-lg font-semibold text-indigo-400 uppercase tracking-wide">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm mt-2">{item.text}</p>
+                </div>
               </CardBody>
             </Card>
           ))}
