@@ -1,8 +1,9 @@
 import React from "react";
-import heroImage from "../assets/images/herosection.jpg";
-import dailypractice from "../assets/images/dailypractice.png";
-import progressreport from "../assets/images/progressreport.png";
-import communityrank from "../assets/images/communityrank.png";
+
+const dailypractice = new URL("../assets/images/dailypractice.png", import.meta.url).href;
+const progressreport = new URL("../assets/images/progressreport.png", import.meta.url).href;
+const communityrank = new URL("../assets/images/communityrank.png", import.meta.url).href;
+const heroImage = new URL("../assets/images/herosection.jpg", import.meta.url).href;
 
 import { Card, CardHeader, CardBody, Image } from "@heroui/react";
 
@@ -58,7 +59,7 @@ const Body = () => {
           {features.map((item, idx) => (
             <Card
               key={idx}
-              className="bg-[#1e293b] h-72 flex flex-col justify-between hover:shadow-xl transition-all duration-300 border border-indigo-500/10"
+              className="bg-[#1e293b] h-80 flex flex-col justify-between hover:shadow-xl transition-all duration-300 border border-indigo-500/10"
             >
               <CardHeader className="pb-2 pt-4 px-5">
                 <p className="uppercase text-indigo-400 text-sm font-bold">
@@ -67,13 +68,11 @@ const Body = () => {
                 <small className="text-gray-400">{item.text}</small>
               </CardHeader>
               <CardBody className="flex justify-center p-4">
-                <div className="w-full flex justify-center items-center">
-                  <Image
-                    alt={`${item.title} visual`}
-                    src={item.img}
-                    className="rounded-lg max-w-full h-44 object-contain"
-                  />
-                </div>
+                <img
+                  src={item.img}
+                  alt={`${item.title} visual`}
+                  className="rounded-lg object-contain h-32 w-auto block"
+                />
               </CardBody>
             </Card>
           ))}
