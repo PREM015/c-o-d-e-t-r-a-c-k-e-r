@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import reactLogo from "../assets/react.svg";
-import "../styles/Navbar.css";
+import "../styles/Navbar.css"; // 👕 Custom CSS styles
 
 function Navbar() {
-  const location = useLocation(); // Get current route
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation(); // 📍 Get the current route (URL)
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // 📱 For mobile hamburger menu toggle
 
+  // 🔗 List of top-level navigation items with labels and icons
   const navItems = [
     { label: "Home", path: "/home", icon: "🏠" },
     { label: "About", path: "/about", icon: "ℹ️" },
@@ -14,34 +15,36 @@ function Navbar() {
     { label: "Login", path: "/login", icon: "🔐" },
   ];
 
+  // 🍔 Toggle hamburger menu open/close
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
   return (
     <nav className="navbar">
-      {/* Logo and Site Name */}
+      {/* 🌟 Logo and brand name */}
       <Link to="/" className="logo">
         <img src={reactLogo} alt="Logo" className="logo-img" />
         <span className="site-name">CodeTracker</span>
       </Link>
 
-      {/* Hamburger Menu Icon */}
+      {/* ☰ Hamburger icon for small screens */}
       <div className="hamburger-menu" onClick={handleMenuToggle}>
         <div></div>
         <div></div>
         <div></div>
       </div>
 
-      {/* Navigation Links */}
-      <div className={`nav-links ${isMenuOpen ? 'show' : ''}`}>
+      {/* 🧭 Navigation menu - shows when isMenuOpen is true (mobile) */}
+      <div className={`nav-links ${isMenuOpen ? "show" : ""}`}>
         {navItems.map((item, index) => {
-          // Check if current route is either the exact path or any child path
+          // ✅ Highlight active nav link (based on route)
           const isActive =
             location.pathname === item.path || location.pathname.startsWith(item.path);
 
           return (
             <div key={index} className="nav-item">
+              {/* 🔘 Main Nav Link */}
               <NavLink
                 to={item.path}
                 className={`nav-button ${isActive ? "active" : ""}`}
@@ -49,7 +52,7 @@ function Navbar() {
                 {item.icon} {item.label}
               </NavLink>
 
-              {/* Dropdown Menu */}
+              {/* ⬇️ Submenu Dropdown for each section */}
               <div className="dropdown">
                 <ul>
                   {item.label === "Home" && (
@@ -62,6 +65,7 @@ function Navbar() {
                       </li>
                     </>
                   )}
+
                   {item.label === "About" && (
                     <>
                       <li>
@@ -72,6 +76,7 @@ function Navbar() {
                       </li>
                     </>
                   )}
+
                   {item.label === "Contact" && (
                     <>
                       <li>
@@ -82,6 +87,7 @@ function Navbar() {
                       </li>
                     </>
                   )}
+
                   {item.label === "Login" && (
                     <>
                       <li>
