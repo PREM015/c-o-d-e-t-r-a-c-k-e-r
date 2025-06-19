@@ -27,19 +27,21 @@ const Body = () => {
 
   return (
     <div className="w-full min-h-screen px-6 py-16 bg-[#0f172a] text-white font-sans">
-      {/* Glowing Animation Styles */}
+
+      {/* 🔥 Glowing Animation Styles */}
       <style>
         {`
           @keyframes glow {
-            0%   { box-shadow: 0 0 10px 2px #6366f1; }
-            25%  { box-shadow: 0 0 10px 2px #10b981; }
-            50%  { box-shadow: 0 0 10px 2px #f59e0b; }
-            75%  { box-shadow: 0 0 10px 2px #ef4444; }
-            100% { box-shadow: 0 0 10px 2px #6366f1; }
+            0%   { box-shadow: 0 0 12px #6366f1; }
+            25%  { box-shadow: 0 0 12px #10b981; }
+            50%  { box-shadow: 0 0 12px #f59e0b; }
+            75%  { box-shadow: 0 0 12px #ef4444; }
+            100% { box-shadow: 0 0 12px #6366f1; }
           }
 
-          .glow-animation {
+          .glow-card {
             animation: glow 3s infinite ease-in-out;
+            border-radius: 1rem;
           }
         `}
       </style>
@@ -75,7 +77,7 @@ const Body = () => {
           {features.map((item, idx) => (
             <Card
               key={idx}
-              className="bg-[#1e293b] rounded-2xl hover:scale-105 transition-transform duration-300 border border-indigo-500/20 glow-animation"
+              className="bg-[#1e293b] glow-card hover:scale-105 transition-transform duration-300"
             >
               <CardBody className="flex flex-col items-center justify-between p-6 h-full text-center">
                 <img
