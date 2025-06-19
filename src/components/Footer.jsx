@@ -1,58 +1,69 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Used to link to different pages without reloading
+import { Link } from "react-router-dom"; // Used for client-side routing without full page reloads
 
-// 🌐 Footer Component: Visible at the bottom of all pages
+// 🌐 Footer Component: Appears on all pages at the bottom
 const Footer = () => {
   return (
-    <footer className="bg-[#0f172a] text-gray-300 py-10 mt-10 hover:text-blue-600">
-      {/* 📦 Main container with 4 columns on medium screens, 1 column on mobile */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-[#0f172a] text-gray-300 py-12 mt-16">
+      {/* ✅ Main layout container: 4 columns on medium+ screens, 1 column on small */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
         
-        {/* 🧠 Brand Info Section */}
+        {/* 🧠 Brand & Description */}
         <div>
-          {/* App Name */}
-          <h2 className="text-xl font-bold text-indigo-400">CodeTracker</h2>
-          {/* Short brand description */}
-          <p className="mt-2 text-sm text-gray-400">
-            Track your coding journey and improve daily with personalized insights.
+          <h2 className="text-2xl font-bold text-indigo-400">CodeTracker</h2>
+          <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+            Track your coding journey and improve daily with personalized insights and progress visualization.
           </p>
         </div>
 
-        {/* ⚡ Quick Navigation Links */}
+        {/* 🔗 Quick Navigation Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
+          <h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            {/* Use <Link> to navigate between pages without reloading the app */}
-            <li><Link to="/home" className="hover:text-white">Home</Link></li>
-            <li><Link to="/dashboard" className="hover:text-white">Dashboard</Link></li>
-            <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
-            <li><Link to="/about" className="hover:text-white">About</Link></li>
+            {["/home", "/dashboard", "/contact", "/about"].map((path, idx) => (
+              <li key={idx}>
+                <Link
+                  to={path}
+                  className="text-gray-400 hover:text-indigo-400 hover:underline transition duration-200"
+                >
+                  {path.replace("/", "").replace("-", " ") || "Home"}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* 📚 Resource Links (Authentication-related pages) */}
+        {/* 🔐 Auth/Resource Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Resources</h3>
+          <h3 className="text-lg font-semibold mb-4 text-white">Resources</h3>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/login" className="hover:text-white">Login</Link></li>
-            <li><Link to="/signup" className="hover:text-white">Signup</Link></li>
-            <li><Link to="/forgot-password" className="hover:text-white">Forgot Password</Link></li>
+            {["/login", "/signup", "/forgot-password"].map((path, idx) => (
+              <li key={idx}>
+                <Link
+                  to={path}
+                  className="text-gray-400 hover:text-indigo-400 hover:underline transition duration-200"
+                >
+                  {path.replace("/", "").replace("-", " ")}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* ☎️ Contact Information */}
+        {/* 📬 Contact Info */}
         <div>
-          <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
-          <p className="text-sm">Email: support@codetracker.dev</p>
-          <p className="text-sm mt-1">Phone: +91 98765 43210</p>
-          <p className="text-sm mt-1">Location: India</p>
+          <h3 className="text-lg font-semibold mb-4 text-white">Contact Us</h3>
+          <ul className="text-sm space-y-1 text-gray-400">
+            <li>Email: <a href="mailto:support@codetracker.dev" className="hover:text-indigo-400 transition">support@codetracker.dev</a></li>
+            <li>Phone: <span className="hover:text-indigo-400 transition">+91 98765 43210</span></li>
+            <li>Location: <span className="hover:text-indigo-400 transition">India</span></li>
+          </ul>
         </div>
       </div>
 
-      {/* 🔻 Footer Bottom: Copyright text */}
-      <div className="mt-10 text-center text-sm text-gray-500 border-t border-gray-700 pt-6">
-        {/* Show the current year automatically */}
-        &copy; {new Date().getFullYear()} CodeTracker. All rights reserved.
+      {/* 🔻 Bottom Bar */}
+      <div className="mt-12 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+        &copy; {new Date().getFullYear()} <span className="text-indigo-400 font-semibold">CodeTracker</span>. All rights reserved.
       </div>
     </footer>
   );
