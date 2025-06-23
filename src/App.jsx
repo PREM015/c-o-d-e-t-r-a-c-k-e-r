@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-// 🌍 Landing
+// 🌍 Landing Page
 import Landing from "./components/Landing";
 
 // 🏠 Home Pages
@@ -15,8 +15,10 @@ import About from "./pages/About/Index";
 import OurVision from "./pages/About/OurVision";
 import PlatformDetails from "./pages/About/PlatformDetails";
 
-// 📬 Contact Page
+// 📬 Contact Pages
 import Contact from "./pages/Contact/Index";
+import EmailUs from "./pages/Contact/EmailUs";
+import SupportForum from "./pages/Contact/SupportForum";
 
 // 🔐 Auth Pages
 import Login from "./pages/Auth/Login";
@@ -31,7 +33,7 @@ import ChangePassword from "./pages/Account/ChangePassword";
 // ❌ Not Found
 import NotFound from "./pages/NotFound";
 
-// 🎨 Theme
+// 🎨 Theme Context
 import { ThemeProvider } from "./contexts/ThemeContext";
 
 function App() {
@@ -41,21 +43,23 @@ function App() {
         <Navbar />
 
         <Routes>
-          {/* 🔹 Landing */}
+          {/* 🌍 Landing */}
           <Route path="/" element={<Landing />} />
 
-          {/* 🔸 Home */}
+          {/* 🏠 Home */}
           <Route path="/home" element={<Home />} />
           <Route path="/home/dashboard" element={<Dashboard />} />
           <Route path="/home/recent-activity" element={<RecentActivity />} />
 
-          {/* 🔸 About */}
+          {/* 📄 About */}
           <Route path="/about" element={<About />} />
           <Route path="/about/our-vision" element={<OurVision />} />
           <Route path="/about/platform-details" element={<PlatformDetails />} />
 
-          {/* 📬 Contact Page */}
+          {/* 📬 Contact */}
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contact/email-us" element={<EmailUs />} />
+          <Route path="/contact/support-forum" element={<SupportForum />} />
 
           {/* 🔐 Auth */}
           <Route path="/login" element={<Login />} />
@@ -67,7 +71,7 @@ function App() {
           <Route path="/account/edit-profile" element={<EditProfile />} />
           <Route path="/account/change-password" element={<ChangePassword />} />
 
-          {/* ❌ 404 Fallback */}
+          {/* ❌ Catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
 
