@@ -2,7 +2,7 @@ import React from 'react'
 
 function EmailUs() {
   return (
-    <div>EmailUs.jsx</div>
+    <div>EmailUs</div>
   )
 }
 
