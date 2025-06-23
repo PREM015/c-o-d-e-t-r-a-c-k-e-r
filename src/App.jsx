@@ -54,7 +54,7 @@ function App() {
           <Route path="/about/our-vision" element={<OurVision />} />
           <Route path="/about/platform-details" element={<PlatformDetails />} />
 
-          {/* 🔸 Contact */}
+          {/* 📬 Contact Page */}
           <Route path="/contact" element={<Contact />} />
 
           {/* 🔐 Auth */}
@@ -67,7 +67,7 @@ function App() {
           <Route path="/account/edit-profile" element={<EditProfile />} />
           <Route path="/account/change-password" element={<ChangePassword />} />
 
-          {/* ❌ 404 fallback */}
+          {/* ❌ 404 Fallback */}
           <Route path="*" element={<NotFound />} />
         </Routes>
 
