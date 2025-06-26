@@ -1,50 +1,63 @@
 import { useState } from "react";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import reactLogo from "../assets/react.svg";
-import "../styles/Navbar.css"; // 👕 Custom CSS styles
+import "../styles/Navbar.css";
+import { useAuth } from "../contexts/AuthContext"; // 🔑 Import auth context
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 function Navbar() {
-  const location = useLocation(); // 📍 Get the current route (URL)
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // 📱 For mobile hamburger menu toggle
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user } = useAuth(); // 🔐 Access current user
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // 🔗 List of top-level navigation items with labels and icons
-  const navItems = [
-    { label: "Home", path: "/home", icon: "🏠" },
-    { label: "About", path: "/about", icon: "ℹ️" },
-    { label: "Contact", path: "/contact", icon: "📞" },
-    { label: "Login", path: "/login", icon: "🔐" },
-  ];
-
-  // 🍔 Toggle hamburger menu open/close
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/login");
+    } catch (error) {
+      console.error("Logout Error:", error.message);
+    }
+  };
+
+  const navItems = [
+    { label: "Home", path: "/home", icon: "🏠" },
+    { label: "About", path: "/about", icon: "ℹ️" },
+    { label: "Contact", path: "/contact", icon: "📞" },
+    ...(!user
+      ? [{ label: "Login", path: "/login", icon: "🔐" }]
+      : [{ label: "Account", path: "/account/profile", icon: "👤" }]),
+  ];
+
   return (
     <nav className="navbar">
-      {/* 🌟 Logo and brand name */}
+      {/* Logo */}
       <Link to="/" className="logo">
         <img src={reactLogo} alt="Logo" className="logo-img" />
         <span className="site-name">CodeTracker</span>
       </Link>
 
-      {/* ☰ Hamburger icon for small screens */}
+      {/* Mobile Menu Toggle */}
       <div className="hamburger-menu" onClick={handleMenuToggle}>
         <div></div>
         <div></div>
         <div></div>
       </div>
 
-      {/* 🧭 Navigation menu - shows when isMenuOpen is true (mobile) */}
+      {/* Navigation Items */}
       <div className={`nav-links ${isMenuOpen ? "show" : ""}`}>
         {navItems.map((item, index) => {
-          // ✅ Highlight active nav link (based on route)
           const isActive =
-            location.pathname === item.path || location.pathname.startsWith(item.path);
+            location.pathname === item.path ||
+            location.pathname.startsWith(item.path);
 
           return (
             <div key={index} className="nav-item">
-              {/* 🔘 Main Nav Link */}
               <NavLink
                 to={item.path}
                 className={`nav-button ${isActive ? "active" : ""}`}
@@ -52,7 +65,7 @@ function Navbar() {
                 {item.icon} {item.label}
               </NavLink>
 
-              {/* ⬇️ Submenu Dropdown for each section */}
+              {/* Dropdown Submenus */}
               <div className="dropdown">
                 <ul>
                   {item.label === "Home" && (
@@ -88,16 +101,27 @@ function Navbar() {
                     </>
                   )}
 
-                  {item.label === "Login" && (
+                  {!user && item.label === "Login" && (
                     <>
-                      <li>
-                        <NavLink to="/login">🔐 Login</NavLink>
-                      </li>
                       <li>
                         <NavLink to="/signup">🆕 Create Account</NavLink>
                       </li>
                       <li>
                         <NavLink to="/forgot-password">❓ Forgot Password</NavLink>
+                      </li>
+                    </>
+                  )}
+
+                  {user && item.label === "Account" && (
+                    <>
+                      <li>
+                        <NavLink to="/account/edit-profile">📝 Edit Profile</NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/account/change-password">🔒 Change Password</NavLink>
+                      </li>
+                      <li>
+                        <button onClick={handleLogout} className="logout-btn">🚪 Logout</button>
                       </li>
                     </>
                   )}

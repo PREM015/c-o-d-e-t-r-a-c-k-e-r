@@ -26,7 +26,7 @@ import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 
-// 👤 Account Pages (Can be protected later)
+// 👤 Account Pages (Protected)
 import Profile from "./pages/Account/Profile";
 import EditProfile from "./pages/Account/EditProfile";
 import ChangePassword from "./pages/Account/ChangePassword";
@@ -38,6 +38,9 @@ import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AuthProvider } from "./contexts/AuthContext";
 
+// 🔐 Private Route
+import PrivateRoute from "./components/PrivateRoute";
+
 function App() {
   return (
     <ThemeProvider>
@@ -46,35 +49,62 @@ function App() {
           <Navbar />
 
           <Routes>
-            {/* 🌍 Landing */}
+            {/* 🌍 Public Routes */}
             <Route path="/" element={<Landing />} />
-
-            {/* 🏠 Home */}
             <Route path="/home" element={<Home />} />
-            <Route path="/home/dashboard" element={<Dashboard />} />
-            <Route path="/home/recent-activity" element={<RecentActivity />} />
-
-            {/* 📄 About */}
             <Route path="/about" element={<About />} />
             <Route path="/about/our-vision" element={<OurVision />} />
             <Route path="/about/platform-details" element={<PlatformDetails />} />
-
-            {/* 📬 Contact */}
             <Route path="/contact" element={<Contact />} />
             <Route path="/contact/email-us" element={<EmailUs />} />
             <Route path="/contact/support-forum" element={<SupportForum />} />
-
-            {/* 🔐 Auth */}
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
 
-            {/* 👤 Account */}
-            <Route path="/account/profile" element={<Profile />} />
-            <Route path="/account/edit-profile" element={<EditProfile />} />
-            <Route path="/account/change-password" element={<ChangePassword />} />
+            {/* 🔐 Protected Routes */}
+            <Route
+              path="/home/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/home/recent-activity"
+              element={
+                <PrivateRoute>
+                  <RecentActivity />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/account/profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/account/edit-profile"
+              element={
+                <PrivateRoute>
+                  <EditProfile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/account/change-password"
+              element={
+                <PrivateRoute>
+                  <ChangePassword />
+                </PrivateRoute>
+              }
+            />
 
-            {/* ❌ Fallback */}
+            {/* ❌ 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
 
