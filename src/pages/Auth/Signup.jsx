@@ -5,8 +5,8 @@ import {
 } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useTheme } from '../../contexts/ThemeContext';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../firebase"; // ✅ Your Firebase config
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../firebase'; // ✅ Firebase config import
 
 const Signup = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
@@ -24,9 +24,9 @@ const Signup = () => {
   const [successMsg, setSuccessMsg] = useState('');
 
   const validate = () => {
-    let temp = {};
+    const temp = {};
     temp.name = formData.name ? '' : 'Name is required';
-    temp.email = /\S+@\S+\.\S+/.test(formData.email) ? '' : 'Email is not valid';
+    temp.email = /\S+@\S+\.\S+/.test(formData.email) ? '' : 'Invalid email address';
     temp.password = formData.password.length >= 6 ? '' : 'Minimum 6 characters';
     setErrors(temp);
     return Object.values(temp).every(x => x === '');
@@ -47,14 +47,12 @@ const Signup = () => {
       );
 
       await updateProfile(userCredential.user, {
-        displayName: formData.name
+        displayName: formData.name,
       });
 
-      setSuccessMsg("🎉 Account created successfully!");
+      setSuccessMsg('🎉 Account created successfully!');
       setFirebaseError('');
       setShowAlert(false);
-
-      // Optional: redirect or clear form
       setFormData({ name: '', email: '', password: '', updates: false });
 
     } catch (error) {
@@ -65,13 +63,11 @@ const Signup = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
+    setFormData(prev => ({
+      ...prev,
       [name]: type === 'checkbox' ? checked : value,
-    });
+    }));
   };
-
-  const toggleDarkMode = () => setIsDarkMode(prev => !prev);
 
   return (
     <Box
@@ -93,19 +89,15 @@ const Signup = () => {
         transition: 'all 0.3s ease-in-out',
       }}
     >
-      {/* Dark Mode Toggle */}
+      {/* 🌗 Dark Mode Toggle */}
       <Tooltip title="Toggle Dark Mode" arrow>
         <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
           <Switch
             checked={isDarkMode}
-            onChange={toggleDarkMode}
+            onChange={() => setIsDarkMode(prev => !prev)}
             sx={{
-              '& .MuiSwitch-thumb': {
-                backgroundColor: isDarkMode ? '#fff' : '#000',
-              },
-              '& .MuiSwitch-track': {
-                backgroundColor: isDarkMode ? '#555' : '#ccc',
-              },
+              '& .MuiSwitch-thumb': { backgroundColor: isDarkMode ? '#fff' : '#000' },
+              '& .MuiSwitch-track': { backgroundColor: isDarkMode ? '#555' : '#ccc' },
             }}
           />
         </Box>
