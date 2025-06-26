@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Box, Paper } from '@mui/material';
 
-function AuthFormWrapper() {
+const AuthFormWrapper = ({ children }) => {
   return (
-    <div>AuthFormWrapper</div>
-  )
-}
+    <Box sx={{ display: 'flex', justifyContent: 'center', mt: 8 }}>
+      <Paper elevation={4} sx={{ p: 4, width: 400 }}>
+        {children}
+      </Paper>
+    </Box>
+  );
+};
 
-export default AuthFormWrapper
+export default AuthFormWrapper;

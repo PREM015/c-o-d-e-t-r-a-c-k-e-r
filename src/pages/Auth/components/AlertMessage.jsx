@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Alert } from '@mui/material';
 
-function AlertMessage() {
+const AlertMessage = ({ severity = "info", message }) => {
+  if (!message) return null;
+
   return (
-    <div>AlertMessage</div>
-  )
-}
+    <Alert severity={severity} sx={{ mt: 2 }}>
+      {message}
+    </Alert>
+  );
+};
 
-export default AlertMessage
+export default AlertMessage;

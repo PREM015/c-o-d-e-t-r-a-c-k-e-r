@@ -1,9 +1,21 @@
-import React from 'react'
+import React from 'react';
+import { TextField } from '@mui/material';
 
-function FormInput() {
+const FormInput = ({ label, name, type, value, onChange, error }) => {
   return (
-    <div>FormInput</div>
-  )
-}
+    <TextField
+      fullWidth
+      label={label}
+      name={name}
+      type={type}
+      value={value}
+      onChange={onChange}
+      error={Boolean(error)}
+      helperText={error}
+      sx={{ mb: 2 }}
+      autoComplete={name}
+    />
+  );
+};
 
-export default FormInput
+export default FormInput;

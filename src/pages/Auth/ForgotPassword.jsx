@@ -8,6 +8,8 @@ import {
   Switch
 } from '@mui/material';
 import { useTheme } from "../../contexts/ThemeContext";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { auth } from "../../firebase"; // ✅ Your Firebase auth instance
 
 const ForgotPassword = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
@@ -16,16 +18,22 @@ const ForgotPassword = () => {
   const [error, setError] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!/\S+@\S+\.\S+/.test(email)) {
       setError('Please enter a valid email address.');
       setSubmitted(false);
-    } else {
-      console.log('Reset link sent to:', email);
+      return;
+    }
+
+    try {
+      await sendPasswordResetEmail(auth, email);
       setError('');
       setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+      setSubmitted(false);
     }
   };
 

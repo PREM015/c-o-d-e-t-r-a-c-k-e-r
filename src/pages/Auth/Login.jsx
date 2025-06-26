@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import {
-  Box,
-  TextField,
-  Button,
-  FormControlLabel,
-  Checkbox,
-  Typography,
-  Alert,
-  Switch,
-  Tooltip
+  Box, TextField, Button, FormControlLabel, Checkbox, Typography,
+  Alert, Switch, Tooltip
 } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useTheme } from '../../contexts/ThemeContext';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase"; // ✅ Firebase auth
 
 const Login = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
@@ -23,6 +18,7 @@ const Login = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [firebaseError, setFirebaseError] = useState('');
   const [showAlert, setShowAlert] = useState(false);
 
   const validate = () => {
@@ -33,173 +29,112 @@ const Login = () => {
     return Object.values(temp).every(x => x === '');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log('Login Data:', formData);
-      setShowAlert(false);
-      // send to backend
-    } else {
+    if (!validate()) {
       setShowAlert(true);
+      return;
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      setFirebaseError('');
+      alert("✅ Logged in successfully!");
+      // Optional: redirect to dashboard
+      // navigate("/home/dashboard");
+    } catch (err) {
+      setFirebaseError(err.message);
     }
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    });
+    setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
-  };
+  const toggleDarkMode = () => setIsDarkMode(prev => !prev);
 
   return (
     <Box
       component="form"
       onSubmit={handleSubmit}
       sx={{
-        width: 400,
-        margin: 'auto',
-        mt: 5,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        bgcolor: isDarkMode ? '#1e1e1e' : '#fafafa',
-        color: isDarkMode ? '#ffffff' : '#000000',
-        p: 4,
-        borderRadius: 3,
-        boxShadow: isDarkMode ? 4 : 3,
-        position: 'relative',
-        transition: 'all 0.3s ease-in-out',
+        width: 400, margin: 'auto', mt: 5, display: 'flex', flexDirection: 'column',
+        gap: 2, bgcolor: isDarkMode ? '#1e1e1e' : '#fafafa', color: isDarkMode ? '#fff' : '#000',
+        p: 4, borderRadius: 3, boxShadow: 4, position: 'relative'
       }}
     >
-      {/* Dark Mode Toggle */}
+      {/* 🌙 Toggle Dark Mode */}
       <Tooltip title="Toggle Dark Mode" arrow>
         <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
           <Switch
             checked={isDarkMode}
             onChange={toggleDarkMode}
             sx={{
-              '& .MuiSwitch-thumb': {
-                backgroundColor: isDarkMode ? '#fff' : '#000',
-              },
-              '& .MuiSwitch-track': {
-                backgroundColor: isDarkMode ? '#555' : '#ccc',
-              },
+              '& .MuiSwitch-thumb': { backgroundColor: isDarkMode ? '#fff' : '#000' },
+              '& .MuiSwitch-track': { backgroundColor: isDarkMode ? '#555' : '#ccc' },
             }}
           />
         </Box>
       </Tooltip>
 
-      <Typography variant="h4" align="center" fontWeight="bold">
-        Log In
-      </Typography>
+      <Typography variant="h4" align="center" fontWeight="bold">Log In</Typography>
 
-      {showAlert && <Alert severity="error">Please correct the highlighted errors.</Alert>}
+      {showAlert && <Alert severity="error">Please correct the highlighted fields.</Alert>}
+      {firebaseError && <Alert severity="error">{firebaseError}</Alert>}
 
+      {/* Email */}
       <TextField
         label="Email"
         name="email"
-        type="email"
         value={formData.email}
         onChange={handleChange}
-        error={Boolean(errors.email)}
+        error={!!errors.email}
         helperText={errors.email}
-        required
-        fullWidth
-        variant="outlined"
-        autoComplete="email"
-        InputLabelProps={{ style: { color: isDarkMode ? '#ccc' : '#555' } }}
-        InputProps={{
-          style: {
-            color: isDarkMode ? '#fff' : '#000',
-            backgroundColor: isDarkMode ? '#2a2a2a' : '#fff',
-          },
-        }}
+        fullWidth required variant="outlined"
       />
 
+      {/* Password */}
       <TextField
         label="Password"
         name="password"
         type="password"
         value={formData.password}
         onChange={handleChange}
-        error={Boolean(errors.password)}
+        error={!!errors.password}
         helperText={errors.password}
-        required
-        fullWidth
-        variant="outlined"
-        autoComplete="current-password"
-        InputLabelProps={{ style: { color: isDarkMode ? '#ccc' : '#555' } }}
-        InputProps={{
-          style: {
-            color: isDarkMode ? '#fff' : '#000',
-            backgroundColor: isDarkMode ? '#2a2a2a' : '#fff',
-          },
-        }}
+        fullWidth required variant="outlined"
       />
 
+      {/* Remember Me */}
       <FormControlLabel
         control={
           <Checkbox
             name="remember"
             checked={formData.remember}
             onChange={handleChange}
-            sx={{
-              color: isDarkMode ? '#ccc' : '#333',
-            }}
           />
         }
         label="Remember me"
-        sx={{ color: isDarkMode ? '#ccc' : '#333' }}
       />
 
-      <Button
-        type="submit"
-        variant="contained"
-        fullWidth
-        sx={{
-          py: 1.5,
-          fontWeight: 'bold',
-          backgroundColor: isDarkMode ? '#1976d2' : '#1976d2',
-          '&:hover': {
-            backgroundColor: isDarkMode ? '#1565c0' : '#115293',
-          },
-        }}
-      >
-        Log In
-      </Button>
+      {/* Submit Button */}
+      <Button type="submit" variant="contained" fullWidth>Log In</Button>
 
+      {/* Google Login Placeholder */}
       <Button
         variant="outlined"
         fullWidth
         startIcon={<GoogleIcon />}
         onClick={() => alert('Google Login coming soon...')}
-        sx={{
-          py: 1.5,
-          color: isDarkMode ? '#fff' : '#000',
-          borderColor: isDarkMode ? '#666' : '#ccc',
-          '&:hover': {
-            backgroundColor: isDarkMode ? '#333' : '#f1f1f1',
-            borderColor: isDarkMode ? '#888' : '#bbb',
-          },
-        }}
       >
         Log in with Google
       </Button>
 
+      {/* Links */}
       <Typography align="center" sx={{ mt: 1 }}>
-        Don’t have an account?{' '}
-        <a href="/signup" style={{ color: isDarkMode ? '#90caf9' : '#1976d2', textDecoration: 'none' }}>
-          Sign up
-        </a>
-        <br />
-        <a href="/forgot-password" style={{ color: isDarkMode ? '#90caf9' : '#1976d2', textDecoration: 'none' }}>
-          Forgot Password? 
-        </a>
+        Don’t have an account? <a href="/signup">Sign up</a><br />
+        <a href="/forgot-password">Forgot Password?</a>
       </Typography>
     </Box>
   );

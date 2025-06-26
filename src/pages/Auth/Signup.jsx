@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import {
-  Box,
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Typography,
-  Alert,
-  Switch,
-  Tooltip
+  Box, TextField, Button, Checkbox, FormControlLabel,
+  Typography, Alert, Switch, Tooltip
 } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useTheme } from '../../contexts/ThemeContext';
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../firebase"; // ✅ Your Firebase config
 
 const Signup = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
@@ -25,6 +20,8 @@ const Signup = () => {
 
   const [errors, setErrors] = useState({});
   const [showAlert, setShowAlert] = useState(false);
+  const [firebaseError, setFirebaseError] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
 
   const validate = () => {
     let temp = {};
@@ -35,14 +32,34 @@ const Signup = () => {
     return Object.values(temp).every(x => x === '');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log('Signup Data:', formData);
-      setShowAlert(false);
-      // API call goes here
-    } else {
+    if (!validate()) {
       setShowAlert(true);
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+
+      await updateProfile(userCredential.user, {
+        displayName: formData.name
+      });
+
+      setSuccessMsg("🎉 Account created successfully!");
+      setFirebaseError('');
+      setShowAlert(false);
+
+      // Optional: redirect or clear form
+      setFormData({ name: '', email: '', password: '', updates: false });
+
+    } catch (error) {
+      setFirebaseError(error.message);
+      setSuccessMsg('');
     }
   };
 
@@ -54,9 +71,7 @@ const Signup = () => {
     });
   };
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
-  };
+  const toggleDarkMode = () => setIsDarkMode(prev => !prev);
 
   return (
     <Box
@@ -100,7 +115,9 @@ const Signup = () => {
         Sign Up
       </Typography>
 
-      {showAlert && <Alert severity="error">Please correct the highlighted errors.</Alert>}
+      {showAlert && <Alert severity="error">Please fix the errors above.</Alert>}
+      {firebaseError && <Alert severity="error">{firebaseError}</Alert>}
+      {successMsg && <Alert severity="success">{successMsg}</Alert>}
 
       <TextField
         label="Full Name"
