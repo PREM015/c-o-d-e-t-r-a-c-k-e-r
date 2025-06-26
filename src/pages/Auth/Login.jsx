@@ -5,8 +5,12 @@ import {
 } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { useTheme } from '../../contexts/ThemeContext';
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase"; // ✅ Firebase auth
+import {
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence
+} from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Login = () => {
   const { isDarkMode, setIsDarkMode } = useTheme();
@@ -37,11 +41,18 @@ const Login = () => {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      // 👇 Use session persistence (logs out when tab is closed)
+      await setPersistence(auth, browserSessionPersistence);
+
+      await signInWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.password
+      );
+
       setFirebaseError('');
       alert("✅ Logged in successfully!");
-      // Optional: redirect to dashboard
-      // navigate("/home/dashboard");
+      // Redirect logic can go here
     } catch (err) {
       setFirebaseError(err.message);
     }
@@ -64,7 +75,6 @@ const Login = () => {
         p: 4, borderRadius: 3, boxShadow: 4, position: 'relative'
       }}
     >
-      {/* 🌙 Toggle Dark Mode */}
       <Tooltip title="Toggle Dark Mode" arrow>
         <Box sx={{ position: 'absolute', top: 16, right: 16 }}>
           <Switch
@@ -83,7 +93,6 @@ const Login = () => {
       {showAlert && <Alert severity="error">Please correct the highlighted fields.</Alert>}
       {firebaseError && <Alert severity="error">{firebaseError}</Alert>}
 
-      {/* Email */}
       <TextField
         label="Email"
         name="email"
@@ -94,7 +103,6 @@ const Login = () => {
         fullWidth required variant="outlined"
       />
 
-      {/* Password */}
       <TextField
         label="Password"
         name="password"
@@ -106,7 +114,6 @@ const Login = () => {
         fullWidth required variant="outlined"
       />
 
-      {/* Remember Me */}
       <FormControlLabel
         control={
           <Checkbox
@@ -118,10 +125,8 @@ const Login = () => {
         label="Remember me"
       />
 
-      {/* Submit Button */}
       <Button type="submit" variant="contained" fullWidth>Log In</Button>
 
-      {/* Google Login Placeholder */}
       <Button
         variant="outlined"
         fullWidth
@@ -131,7 +136,6 @@ const Login = () => {
         Log in with Google
       </Button>
 
-      {/* Links */}
       <Typography align="center" sx={{ mt: 1 }}>
         Don’t have an account? <a href="/signup">Sign up</a><br />
         <a href="/forgot-password">Forgot Password?</a>
